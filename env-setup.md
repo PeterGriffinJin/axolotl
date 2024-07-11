@@ -14,3 +14,5 @@ cd axolotl
 pip3 install packaging ninja
 pip3 install -e '.[flash-attn,deepspeed]'
 ```
+
+git pull origin bowen
