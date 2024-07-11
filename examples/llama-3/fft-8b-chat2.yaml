@@ -1,0 +1,73 @@
+base_model: meta-llama/Meta-Llama-3-8B-Instruct
+model_type: LlamaForCausalLM
+tokenizer_type: AutoTokenizer
+
+load_in_8bit: false
+load_in_4bit: false
+strict: false
+
+chat_template: llama3
+datasets:
+  - path: /home/peterjin/mnt/axolotl_train/drop/bm25/llama3-8B-chat/train.jsonl
+    ds_type: json
+    type: chat_template
+    chat_template: llama3
+    field_messages: messages
+    message_field_role: role
+    message_field_content: content
+    roles:
+      user:
+        - user
+      system:
+        - system
+      assistant:
+        - assistant
+
+dataset_prepared_path: last_run_prepared
+val_set_size: 0.05
+output_dir: /home/peterjin/mnt/axolotl_output/drop-bm25-llama3-8B-chat-epoch10
+
+sequence_len: 8192
+sample_packing: false
+eval_sample_packing: false
+pad_to_sequence_len: true
+
+wandb_project: RAG-tune-llm
+wandb_entity: uiuc-dmg
+wandb_watch:
+wandb_name: drop-bm25-llama3-8B-chat-epoch10
+wandb_log_model:
+
+gradient_accumulation_steps: 8
+micro_batch_size: 1
+num_epochs: 10
+optimizer: paged_adamw_8bit
+lr_scheduler: cosine
+learning_rate: 2e-5
+
+train_on_inputs: false
+group_by_length: false
+bf16: auto
+fp16:
+tf32: false
+
+gradient_checkpointing: true
+gradient_checkpointing_kwargs:
+  use_reentrant: false
+early_stopping_patience:
+resume_from_checkpoint:
+logging_steps: 1
+xformers_attention:
+flash_attention: true
+
+warmup_ratio: 0.05
+evals_per_epoch: 1
+eval_table_size:
+saves_per_epoch: 1
+debug:
+deepspeed:
+weight_decay: 0.0
+fsdp:
+fsdp_config:
+special_tokens:
+  pad_token: <|end_of_text|>
