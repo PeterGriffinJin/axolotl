@@ -1,16 +1,23 @@
-base_model: meta-llama/Meta-Llama-3-8B-Instruct
-model_type: LlamaForCausalLM
+base_model: google/gemma-2b-it
+model_type: AutoModelForCausalLM
 tokenizer_type: AutoTokenizer
 
-load_in_8bit: true
+load_in_8bit: false
 load_in_4bit: false
 strict: false
 
-chat_template: llama3
+chat_template: gemma
 datasets:
-  - path: fozziethebeat/alpaca_messages_2k_test
+  - path: nvidia/ChatQA-Training-Data
+    name:
+      - drop
+      - narrativeqa
+      - newqa
+      - quoref
+      - ropes
+      - tatqa
     type: chat_template
-    chat_template: llama3
+    chat_template: gemma
     field_messages: messages
     message_field_role: role
     message_field_content: content
@@ -20,21 +27,14 @@ datasets:
       assistant:
         - assistant
 
-dataset_prepared_path:
+dataset_prepared_path: last_run_prepared
 val_set_size: 0.05
-output_dir: ./outputs/lora-out
+output_dir: /home/peterjin/mnt/axolotl_output/out
 
-sequence_len: 4096
-sample_packing: false
+sequence_len: 8192
+sample_packing: true
+eval_sample_packing: false
 pad_to_sequence_len: true
-
-adapter: lora
-lora_model_dir:
-lora_r: 32
-lora_alpha: 16
-lora_dropout: 0.05
-lora_target_linear: true
-lora_fan_in_fan_out:
 
 wandb_project:
 wandb_entity:
@@ -42,12 +42,12 @@ wandb_watch:
 wandb_name:
 wandb_log_model:
 
-gradient_accumulation_steps: 4
-micro_batch_size: 2
+gradient_accumulation_steps: 8
+micro_batch_size: 1
 num_epochs: 4
-optimizer: adamw_bnb_8bit
+optimizer: paged_adamw_8bit
 lr_scheduler: cosine
-learning_rate: 0.0002
+learning_rate: 2e-5
 
 train_on_inputs: false
 group_by_length: false
@@ -56,23 +56,21 @@ fp16:
 tf32: false
 
 gradient_checkpointing: true
+gradient_checkpointing_kwargs:
+  use_reentrant: false
 early_stopping_patience:
 resume_from_checkpoint:
-local_rank:
 logging_steps: 1
 xformers_attention:
 flash_attention: true
-s2_attention:
 
 warmup_steps: 10
-evals_per_epoch: 4
+evals_per_epoch: 2
 eval_table_size:
-eval_max_new_tokens: 128
-saves_per_epoch: 1
+saves_per_epoch: 4
 debug:
 deepspeed:
 weight_decay: 0.0
 fsdp:
 fsdp_config:
 special_tokens:
-  pad_token: <|end_of_text|>

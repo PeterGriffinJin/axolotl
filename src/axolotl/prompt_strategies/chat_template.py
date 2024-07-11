@@ -126,6 +126,7 @@ def load(tokenizer, cfg, ds_cfg: Optional[Dict[str, Any]] = None):
         ChatTemplatePrompter(
             tokenizer,
             chat_templates(chat_template),
+            max_length=cfg.sequence_len,
             message_field_role=message_field_role,
             message_field_content=message_field_content,
             roles=roles,
