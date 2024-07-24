@@ -8,7 +8,7 @@ strict: false
 
 chat_template: llama3
 datasets:
-  - path: /home/peterjin/mnt/axolotl_train/nq_train_10/e5/llama3-8B-chat/train.jsonl
+  - path: /home/peterjin/mnt/axolotl_train/nq_train_mixretriever/bm25_e5/llama3-8B-chat/train.jsonl
     ds_type: json
     type: chat_template
     chat_template: llama3
@@ -25,7 +25,7 @@ datasets:
 
 dataset_prepared_path: last_run_prepared
 val_set_size: 0.05
-output_dir: /home/peterjin/mnt/axolotl_output/nq_train_10-e5-llama3-8B-chat-epoch4-lr1e-5
+output_dir: /home/peterjin/mnt/axolotl_output/nq_train_mixretriever-bm25_e5-llama3-8B-chat-epoch4-lr1e-5
 
 sequence_len: 8192
 sample_packing: false
@@ -35,7 +35,7 @@ pad_to_sequence_len: true
 wandb_project: RAG-tune-llm
 wandb_entity: uiuc-dmg
 wandb_watch:
-wandb_name: nq_train_10-e5-llama3-8B-chat-epoch4-lr1e-5
+wandb_name: nq_train_mixretriever-bm25_e5-llama3-8B-chat-epoch4-lr1e-5
 wandb_log_model:
 
 gradient_accumulation_steps: 8
