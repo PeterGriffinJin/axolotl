@@ -39,7 +39,7 @@ wandb_name: nq_train_diff_len_20_40-e5-llama3-8B-chat-epoch4-lr1e-5-multinode
 wandb_log_model:
 
 gradient_accumulation_steps: 8
-micro_batch_size: 1
+micro_batch_size: 2
 num_epochs: 4
 optimizer: adamw_torch
 lr_scheduler: cosine
