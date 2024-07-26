@@ -15,4 +15,13 @@ pip3 install packaging ninja
 pip3 install -e '.[flash-attn,deepspeed]'
 ```
 
+## sync codebase
+```
 git pull origin bowen
+```
+
+## multi-node setting
+
+1. change ethe main_process_ip
+
+2. change the machine_rank
