@@ -25,3 +25,8 @@ git pull origin bowen
 1. change ethe main_process_ip
 
 2. change the machine_rank
+
+3. run this command on every machine
+```
+accelerate launch --config_file ~/multi_node.yaml -m axolotl.cli.train examples/llama-3/fft-8b-chat-multinode.yaml
+```
