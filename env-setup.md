@@ -22,11 +22,11 @@ git pull origin bowen
 
 ## multi-node setting
 
-1. change ethe main_process_ip
+1. change the main_process_ip in ```~/multinode_configs/fsdp.yaml``` or ```~/multinode_configs/deepspeed.yaml```
 
-2. change the machine_rank
+2. change the machine_rank in ```~/multinode_configs/fsdp.yaml``` or ```~/multinode_configs/deepspeed.yaml```
 
 3. run this command on every machine
 ```
-accelerate launch --config_file ~/multi_node.yaml -m axolotl.cli.train examples/llama-3/fft-8b-chat-multinode.yaml
+accelerate launch --config_file ~/multinode_configs/fsdp.yaml -m axolotl.cli.train examples/llama-3/fft-8b-chat-multinode.yaml
 ```
