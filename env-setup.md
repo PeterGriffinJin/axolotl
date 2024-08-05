@@ -38,6 +38,7 @@ FLASH_ATTENTION_FORCE_BUILD=TRUE pip install flash-attn
 ## sync codebase
 ```
 git pull origin bowen
+git pull origin aug5
 ```
 
 ## switch branch
