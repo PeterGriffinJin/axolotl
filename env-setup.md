@@ -26,6 +26,11 @@ FLASH_ATTENTION_FORCE_BUILD=TRUE pip install flash-attn
 git pull origin bowen
 ```
 
+## switch branch
+```
+git checkout -b aug5
+```
+
 ## multi-node setting
 
 1. change the main_process_ip in ```~/multinode_configs/fsdp.yaml``` or ```~/multinode_configs/deepspeed.yaml```
