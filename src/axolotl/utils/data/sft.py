@@ -572,6 +572,10 @@ def get_dataset_wrapper(
             dataset,
             **ds_kwargs,
         )
+        # check data
+        # from IPython import embed
+        # embed()
+        # exit()
     elif d_base_type == "alpaca":
         dataset_prompter = AlpacaPrompter(d_prompt_style)
         ds_strategy = AlpacaPromptTokenizingStrategy(

@@ -309,14 +309,14 @@ class ChatTemplateStrategy(PromptTokenizingStrategy):
         start_search_idx = 0
 
         # Locate the starting index after the specified number of EOS tokens
-        for i, token_id in enumerate(conversation_ids):
-            if token_id == eos_token_id:
-                eos_count += 1
-                if eos_count == turn:
-                    start_search_idx = (
-                        i + 1
-                    )  # Start searching after the specified turn's EOS token
-                    break
+        # for i, token_id in enumerate(conversation_ids):
+        #     if token_id == eos_token_id:
+        #         eos_count += 1
+        #         if eos_count == turn:
+        #             start_search_idx = (
+        #                 i + 1
+        #             )  # Start searching after the specified turn's EOS token
+        #             break
 
         # Find the start index of the content within the conversation
         start_idx = -1

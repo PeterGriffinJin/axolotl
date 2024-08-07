@@ -8,7 +8,7 @@ strict: false
 
 chat_template: mistral
 datasets:
-  - path: /home/peterjin/mnt/axolotl_train/nq_train/e5/llama3-8B-chat/train.jsonl
+  - path: /home/peterjin/mnt/axolotl_train/nq_train/e5/gemma2-9B-chat/train.jsonl
     ds_type: json
     type: chat_template
     chat_template: mistral
@@ -28,7 +28,7 @@ val_set_size: 0.05
 # output_dir: /home/peterjin/mnt/axolotl_output/nq_train-e5-llama31-8B-chat-epoch4-lr1e-5
 output_dir: /home/peterjin/mnt/axolotl_output/debug
 
-sequence_len: 8192 # 24576 can be supported by 8 h100s, 
+sequence_len: 16384 # 24576 can be supported by 8 h100s, 
 sample_packing: true
 eval_sample_packing: false
 pad_to_sequence_len: true
@@ -73,3 +73,4 @@ weight_decay: 0.0
 fsdp:
 fsdp_config:
 special_tokens:
+  pad_token: <unk>

@@ -57,3 +57,6 @@ git checkout -b aug5
 accelerate launch --config_file ~/multinode_configs/fsdp.yaml -m axolotl.cli.train examples/llama-3/fft-8b-chat-multinode.yaml
 accelerate launch --config_file ~/multinode_configs/deepspeed.yaml -m axolotl.cli.train examples/llama-3/fft-8b-chat-multinode.yaml
 ```
+
+## dataset debug
+search for ```check data``` or ```embed()```
