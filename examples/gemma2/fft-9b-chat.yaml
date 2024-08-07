@@ -1,4 +1,4 @@
-base_model: google/gemma-2-9b
+base_model: google/gemma-2-9b-it
 model_type: AutoModelForCausalLM
 tokenizer_type: AutoTokenizer
 
@@ -26,8 +26,8 @@ val_set_size: 0.05
 # output_dir: /home/peterjin/mnt/axolotl_output/nq_train-e5-llama31-8B-chat-epoch4-lr1e-5
 output_dir: /home/peterjin/mnt/axolotl_output/debug
 
-sequence_len: 8192 # 24576 can be supported by 8 h100s, 
-sample_packing: true
+sequence_len: 8192 # 24576 can be supported by 8 h100s
+sample_packing: false
 eval_sample_packing: false
 pad_to_sequence_len: true
 
@@ -41,7 +41,7 @@ wandb_log_model:
 gradient_accumulation_steps: 8
 micro_batch_size: 1
 num_epochs: 4
-optimizer: paged_adamw_8bit
+optimizer: adamw_bnb_8bit
 lr_scheduler: cosine
 learning_rate: 1e-5
 
@@ -58,7 +58,10 @@ early_stopping_patience:
 resume_from_checkpoint:
 logging_steps: 1
 xformers_attention:
-flash_attention: true
+flash_attention: false
+sdp_attention: false
+s2_attention: false
+eager_attention: true
 
 warmup_ratio: 0.05
 evals_per_epoch: 1
@@ -71,4 +74,3 @@ weight_decay: 0.0
 fsdp:
 fsdp_config:
 special_tokens:
-  pad_token: <|end_of_text|>
