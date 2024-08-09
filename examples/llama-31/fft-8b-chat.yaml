@@ -8,7 +8,7 @@ strict: false
 
 chat_template: llama31
 datasets:
-  - path: /home/peterjin/mnt/axolotl_train/nq_train/e5/llama3.1-8B-chat/train.jsonl
+  - path: /home/peterjin/mnt/axolotl_train/nq_train/e5/llama3-8B-chat/train.jsonl
     ds_type: json
     type: chat_template
     chat_template: llama31
@@ -41,7 +41,7 @@ wandb_name: debug
 wandb_log_model:
 
 gradient_accumulation_steps: 8
-micro_batch_size: 2
+micro_batch_size: 1
 num_epochs: 4
 optimizer: paged_adamw_8bit
 lr_scheduler: cosine

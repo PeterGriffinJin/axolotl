@@ -105,7 +105,7 @@ flash_attention: true
 warmup_ratio: 0.05
 evals_per_epoch: 1
 eval_table_size:
-saves_per_epoch: 1
+saves_per_epoch: 2
 save_total_limit: 10
 debug:
 deepspeed:
