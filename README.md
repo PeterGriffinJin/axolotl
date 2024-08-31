@@ -123,6 +123,8 @@ CUDA_VISIBLE_DEVICES=0 python -m axolotl.cli.preprocess examples/openllama-3b/lo
 # finetune lora
 accelerate launch -m axolotl.cli.train examples/openllama-3b/lora.yml
 
+accelerate launch -m axolotl.cli.train examples/gemma2/ --deepspeed deepspeed_configs/zero3.json
+
 # inference
 accelerate launch -m axolotl.cli.inference examples/openllama-3b/lora.yml \
     --lora_model_dir="./outputs/lora-out"
