@@ -1,17 +1,17 @@
-base_model: mistralai/Mistral-Nemo-Instruct-2407
+base_model: google/gemma-2-9b
 model_type: AutoModelForCausalLM
 tokenizer_type: AutoTokenizer
 
 load_in_8bit: false
 load_in_4bit: false
 strict: false
-# mistral and gemma share the same format of training data
-chat_template: mistral
+
+chat_template: gemma
 datasets:
-  - path: /home/peterjin/mnt/axolotl_train/nq_train/e5/mistral-nemo/train.jsonl
+  - path: /home/peterjin/mnt/axolotl_train/nq_train/e5/gemma2-9B-chat/train_rationale_12500.jsonl
     ds_type: json
     type: chat_template
-    chat_template: mistral
+    chat_template: gemma
     field_messages: messages
     message_field_role: role
     message_field_content: content
@@ -20,10 +20,10 @@ datasets:
         - user
       assistant:
         - assistant
-  - path: /home/peterjin/mnt/axolotl_train/wow_train/e5/mistral-nemo/train.jsonl
+  - path: /home/peterjin/mnt/axolotl_train/mmlu_train/e5/gemma2-9B-chat/train_rationale_12500.jsonl
     ds_type: json
     type: chat_template
-    chat_template: mistral
+    chat_template: gemma
     field_messages: messages
     message_field_role: role
     message_field_content: content
@@ -32,10 +32,10 @@ datasets:
         - user
       assistant:
         - assistant
-  - path: /home/peterjin/mnt/axolotl_train/fever_train/e5/mistral-nemo/train_5000.jsonl
+  - path: /home/peterjin/mnt/axolotl_train/wow_train/e5/gemma2-9B-chat/train_rationale_12500.jsonl
     ds_type: json
     type: chat_template
-    chat_template: mistral
+    chat_template: gemma
     field_messages: messages
     message_field_role: role
     message_field_content: content
@@ -44,10 +44,10 @@ datasets:
         - user
       assistant:
         - assistant
-  - path: /home/peterjin/mnt/axolotl_train/openbookqa_train/e5/mistral-nemo/train.jsonl
+  - path: /home/peterjin/mnt/axolotl_train/fever_train/e5/gemma2-9B-chat/train_rationale_12500.jsonl
     ds_type: json
     type: chat_template
-    chat_template: mistral
+    chat_template: gemma
     field_messages: messages
     message_field_role: role
     message_field_content: content
@@ -59,26 +59,23 @@ datasets:
 
 dataset_prepared_path: last_run_prepared
 val_set_size: 0.05
-# output_dir: /home/peterjin/mnt/axolotl_output/nq_wow_openbookqa_fever5k-e5-mistral-nemo-chat-epoch4-lr1e-6
-output_dir: /home/peterjin/axolotl_output/nq_wow_openbookqa_fever5k-e5-mistral-nemo-chat-epoch4-lr1e-6
-# output_dir: /home/peterjin/mnt/axolotl_output/debug
+output_dir: /home/peterjin/axolotl_output/nq_mmlu_wow_fever_50000_rationale-e5-gemma2-9b-epoch4-lr1e-6
 
-sequence_len: 20480 # 24576 can be supported by 8 h100s, 
-sample_packing: true
+sequence_len: 8192 # 24576 can be supported by 8 h100s
+sample_packing: false
 eval_sample_packing: false
 pad_to_sequence_len: true
 
 wandb_project: RAG-tune-llm
 wandb_entity: uiuc-dmg
 wandb_watch:
-wandb_name: nq_wow_openbookqa_fever5k-e5-mistral-nemo-chat-epoch4-lr1e-6
-# wandb_name: debug
+wandb_name: nq_mmlu_wow_fever_50000_rationale-e5-gemma2-9b-epoch4-lr1e-6
 wandb_log_model:
 
-gradient_accumulation_steps: 4
+gradient_accumulation_steps: 8
 micro_batch_size: 1
 num_epochs: 4
-optimizer: paged_adamw_8bit
+optimizer: adamw_bnb_8bit
 lr_scheduler: cosine
 learning_rate: 1e-6
 
@@ -95,7 +92,10 @@ early_stopping_patience:
 resume_from_checkpoint:
 logging_steps: 1
 xformers_attention:
-flash_attention: true
+flash_attention: false
+sdp_attention: false
+s2_attention: false
+eager_attention: true
 
 warmup_ratio: 0.05
 evals_per_epoch: 1
@@ -108,4 +108,3 @@ weight_decay: 0.0
 fsdp:
 fsdp_config:
 special_tokens:
-  pad_token: <unk>
