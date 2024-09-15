@@ -59,7 +59,7 @@ datasets:
 
 dataset_prepared_path: last_run_prepared
 val_set_size: 0.05
-output_dir: /home/peterjin/axolotl_output/nq_mmlu_wow_fever_50000_rationale-e5-mistral-nemo-epoch4-lr1e-5-eos
+output_dir: /home/peterjin/axolotl_output/nq_mmlu_wow_fever_50000_rationale-e5-mistral-nemo-epoch4-lr1e-7-eos
 
 sequence_len: 8192 # 24576 can be supported by 8 h100s, 
 sample_packing: false
@@ -69,7 +69,7 @@ pad_to_sequence_len: true
 wandb_project: RAG-tune-llm
 wandb_entity: uiuc-dmg
 wandb_watch:
-wandb_name: nq_mmlu_wow_fever_50000_rationale-e5-mistral-nemo-epoch4-lr1e-5-eos
+wandb_name: nq_mmlu_wow_fever_50000_rationale-e5-mistral-nemo-epoch4-lr1e-7-eos
 wandb_log_model:
 
 gradient_accumulation_steps: 8
@@ -77,7 +77,7 @@ micro_batch_size: 1
 num_epochs: 4
 optimizer: adamw_bnb_8bit
 lr_scheduler: cosine
-learning_rate: 1e-5
+learning_rate: 1e-7
 
 train_on_inputs: false
 group_by_length: false
