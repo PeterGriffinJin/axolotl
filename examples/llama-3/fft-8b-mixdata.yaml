@@ -8,7 +8,7 @@ strict: false
 
 chat_template: llama3
 datasets:
-  - path: /home/peterjin/mnt/axolotl_train/nq_train/e5/llama3-8B-chat/train.jsonl
+  - path: /home/peterjin/mnt/axolotl_train/nq_train/e5/llama3-8B-chat/train_12500.jsonl
     ds_type: json
     type: chat_template
     chat_template: llama3
@@ -22,7 +22,7 @@ datasets:
         - system
       assistant:
         - assistant
-  - path: /home/peterjin/mnt/axolotl_train/wow_train/e5/llama3-8B-chat/train.jsonl
+  - path: /home/peterjin/mnt/axolotl_train/mmlu_train/e5/llama3-8B-chat/train_12500.jsonl
     ds_type: json
     type: chat_template
     chat_template: llama3
@@ -36,7 +36,7 @@ datasets:
         - system
       assistant:
         - assistant
-  - path: /home/peterjin/mnt/axolotl_train/fever_train/e5/llama3-8B-chat/train_5000.jsonl
+  - path: /home/peterjin/mnt/axolotl_train/wow_train/e5/llama3-8B-chat/train_12500.jsonl
     ds_type: json
     type: chat_template
     chat_template: llama3
@@ -50,7 +50,7 @@ datasets:
         - system
       assistant:
         - assistant
-  - path: /home/peterjin/mnt/axolotl_train/openbookqa_train/e5/llama3-8B-chat/train.jsonl
+  - path: /home/peterjin/mnt/axolotl_train/fever_train/e5/llama3-8B-chat/train_12500.jsonl
     ds_type: json
     type: chat_template
     chat_template: llama3
@@ -67,16 +67,16 @@ datasets:
 
 dataset_prepared_path: last_run_prepared
 val_set_size: 0.05
-output_dir: /home/peterjin/mnt/axolotl_output/nq_wow_openbookqa_fever5k-e5-llama3-8B-epoch4-lr1e-5
+output_dir: /home/peterjin/mnt/axolotl_output/nq_mmlu_wow_fever_50000-e5-llama3-8b-base-epoch4-lr1e-5
 
 sequence_len: 8192
-sample_packing: true
+sample_packing: false
 pad_to_sequence_len: true
 
 wandb_project: RAG-tune-llm
 wandb_entity: uiuc-dmg
 wandb_watch:
-wandb_name: nq_wow_openbookqa_fever5k-e5-llama3-8B-epoch4-lr1e-5
+wandb_name: nq_mmlu_wow_fever_50000-e5-llama3-8b-base-epoch4-lr1e-5
 wandb_log_model:
 
 gradient_accumulation_steps: 8
