@@ -9,6 +9,7 @@ strict: false
 chat_template: mistral
 datasets:
   - path: /home/peterjin/mnt/axolotl_train/nq_train/e5/gemma2-9B-chat/train_rationale_12500.jsonl
+  # - path: /home/peterjin/mnt/axolotl_train/nq_train/e5/gemma2-9B-chat/train_12500.jsonl
     ds_type: json
     type: chat_template
     chat_template: mistral
@@ -20,42 +21,45 @@ datasets:
         - user
       assistant:
         - assistant
-  - path: /home/peterjin/mnt/axolotl_train/mmlu_train/e5/gemma2-9B-chat/train_rationale_12500.jsonl
-    ds_type: json
-    type: chat_template
-    chat_template: mistral
-    field_messages: messages
-    message_field_role: role
-    message_field_content: content
-    roles:
-      user:
-        - user
-      assistant:
-        - assistant
-  - path: /home/peterjin/mnt/axolotl_train/wow_train/e5/gemma2-9B-chat/train_rationale_12500.jsonl
-    ds_type: json
-    type: chat_template
-    chat_template: mistral
-    field_messages: messages
-    message_field_role: role
-    message_field_content: content
-    roles:
-      user:
-        - user
-      assistant:
-        - assistant
-  - path: /home/peterjin/mnt/axolotl_train/fever_train/e5/gemma2-9B-chat/train_rationale_12500.jsonl
-    ds_type: json
-    type: chat_template
-    chat_template: mistral
-    field_messages: messages
-    message_field_role: role
-    message_field_content: content
-    roles:
-      user:
-        - user
-      assistant:
-        - assistant
+  # # - path: /home/peterjin/mnt/axolotl_train/mmlu_train/e5/gemma2-9B-chat/train_rationale_12500.jsonl
+  # - path: /home/peterjin/mnt/axolotl_train/mmlu_train/e5/gemma2-9B-chat/train_12500.jsonl
+  #   ds_type: json
+  #   type: chat_template
+  #   chat_template: mistral
+  #   field_messages: messages
+  #   message_field_role: role
+  #   message_field_content: content
+  #   roles:
+  #     user:
+  #       - user
+  #     assistant:
+  #       - assistant
+  # # - path: /home/peterjin/mnt/axolotl_train/wow_train/e5/gemma2-9B-chat/train_rationale_12500.jsonl
+  # - path: /home/peterjin/mnt/axolotl_train/wow_train/e5/gemma2-9B-chat/train_12500.jsonl
+  #   ds_type: json
+  #   type: chat_template
+  #   chat_template: mistral
+  #   field_messages: messages
+  #   message_field_role: role
+  #   message_field_content: content
+  #   roles:
+  #     user:
+  #       - user
+  #     assistant:
+  #       - assistant
+  # # - path: /home/peterjin/mnt/axolotl_train/fever_train/e5/gemma2-9B-chat/train_rationale_12500.jsonl
+  # - path: /home/peterjin/mnt/axolotl_train/fever_train/e5/gemma2-9B-chat/train_12500.jsonl
+  #   ds_type: json
+  #   type: chat_template
+  #   chat_template: mistral
+  #   field_messages: messages
+  #   message_field_role: role
+  #   message_field_content: content
+  #   roles:
+  #     user:
+  #       - user
+  #     assistant:
+  #       - assistant
 
 dataset_prepared_path: last_run_prepared
 val_set_size: 0.05

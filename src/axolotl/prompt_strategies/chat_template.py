@@ -302,21 +302,32 @@ class ChatTemplateStrategy(PromptTokenizingStrategy):
                    Returns (-1, -1) if the turn content is not found.
         """
         content = turn_content.get(self.prompter.message_field_content, "")
+        if 'gemma-2' in self.tokenizer.name_or_path and content[-1] == '\n':
+            content = content.strip()
+        if 'Llama-3' in self.tokenizer.name_or_path and content[-1] == '\n':
+            content = content.strip()
         content_ids = self.tokenizer.encode(content, add_special_tokens=False)
 
-        eos_token_id = self.tokenizer.eos_token_id
+        if 'mistral' in self.tokenizer.name_or_path:
+            eos_token_id = 4
+        elif 'gemma-2' in self.tokenizer.name_or_path:
+            eos_token_id = 107
+        elif 'Llama-3' in self.tokenizer.name_or_path:
+            eos_token_id = 128009
+        else:
+            eos_token_id = self.tokenizer.eos_token_id
         eos_count = 0
         start_search_idx = 0
 
         # Locate the starting index after the specified number of EOS tokens
-        # for i, token_id in enumerate(conversation_ids):
-        #     if token_id == eos_token_id:
-        #         eos_count += 1
-        #         if eos_count == turn:
-        #             start_search_idx = (
-        #                 i + 1
-        #             )  # Start searching after the specified turn's EOS token
-        #             break
+        for i, token_id in enumerate(conversation_ids):
+            if token_id == eos_token_id:
+                eos_count += 1
+                if eos_count == turn:
+                    start_search_idx = (
+                        i + 1
+                    )  # Start searching after the specified turn's EOS token
+                    break
 
         # Find the start index of the content within the conversation
         start_idx = -1

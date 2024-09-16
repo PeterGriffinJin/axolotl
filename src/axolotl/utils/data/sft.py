@@ -572,6 +572,7 @@ def get_dataset_wrapper(
             dataset,
             **ds_kwargs,
         )
+        # print(dataset_wrapper[0]['input_ids'])
         # check data
         # from IPython import embed
         # embed()
