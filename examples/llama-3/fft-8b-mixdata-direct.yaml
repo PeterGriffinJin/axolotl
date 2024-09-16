@@ -67,7 +67,7 @@ datasets:
 
 dataset_prepared_path: last_run_prepared
 val_set_size: 0.05
-output_dir: /home/peterjin/axolotl_output/nq_mmlu_wow_fever_50000-direct-llama3-8b-base-epoch4-lr5e-6
+output_dir: /home/peterjin/axolotl_output/nq_mmlu_wow_fever_50000-direct-llama3-8b-base-epoch4-lr5e-6-new
 
 sequence_len: 8192
 sample_packing: false
@@ -76,7 +76,7 @@ pad_to_sequence_len: true
 wandb_project: RAG-tune-llm
 wandb_entity: uiuc-dmg
 wandb_watch:
-wandb_name: nq_mmlu_wow_fever_50000-direct-llama3-8b-base-epoch4-lr5e-6
+wandb_name: nq_mmlu_wow_fever_50000-direct-llama3-8b-base-epoch4-lr5e-6-new
 wandb_log_model:
 
 gradient_accumulation_steps: 8
