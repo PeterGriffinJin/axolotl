@@ -67,7 +67,7 @@ datasets:
 
 dataset_prepared_path: last_run_prepared
 val_set_size: 0.05
-output_dir: /home/peterjin/mnt/axolotl_output/nq_mmlu_wow_fever_50000-e5-llama3-8b-base-epoch4-lr5e-6
+output_dir: /home/peterjin/axolotl_output/nq_mmlu_wow_fever_50000-e5-llama3-8b-base-epoch4-lr5e-6
 
 sequence_len: 8192
 sample_packing: false
