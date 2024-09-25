@@ -302,9 +302,9 @@ class ChatTemplateStrategy(PromptTokenizingStrategy):
                    Returns (-1, -1) if the turn content is not found.
         """
         content = turn_content.get(self.prompter.message_field_content, "")
-        if 'gemma-2' in self.tokenizer.name_or_path and content[-1] == '\n':
+        if 'gemma-2' in self.tokenizer.name_or_path and content != '' and content[-1] == '\n':
             content = content.strip()
-        if 'Llama-3' in self.tokenizer.name_or_path and content[-1] == '\n':
+        if 'Llama-3' in self.tokenizer.name_or_path and content != '' and content[-1] == '\n':
             content = content.strip()
         content_ids = self.tokenizer.encode(content, add_special_tokens=False)
 
