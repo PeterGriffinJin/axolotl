@@ -192,6 +192,7 @@ class ChatTemplate(str, Enum):
     mistral = "mistral"  # pylint: disable=invalid-name
     llama31 = "llama31"  # pylint: disable=invalid-name
     deepseek_math = "deepseek_math"
+    qwen = "qwen"
 
 class LoftQConfig(BaseModel):
     """LoftQ configuration subset"""
