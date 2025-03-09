@@ -1,4 +1,4 @@
-base_model: Qwen/Qwen2.5-3B-Instruct
+base_model: Qwen/Qwen2.5-3B
 model_type: AutoModelForCausalLM
 tokenizer_type: AutoTokenizer
 
@@ -39,7 +39,7 @@ datasets:
 
 dataset_prepared_path: last_run_prepared
 val_set_size: 0.05
-output_dir: /home/peterjin/axolotl_output/nq_hotpotqa_qwen3bit_sft
+output_dir: /home/peterjin/axolotl_output/nq_hotpotqa_qwen3b_sft
 
 sequence_len: 4096
 sample_packing: false
@@ -49,7 +49,7 @@ pad_to_sequence_len: true
 wandb_project: RAG-tune-llm
 wandb_entity: uiuc-dmg
 wandb_watch:
-wandb_name: nq_hotpotqa_qwen3bit_sft
+wandb_name: nq_hotpotqa_qwen3b_sft
 wandb_log_model:
 
 gradient_accumulation_steps: 8
