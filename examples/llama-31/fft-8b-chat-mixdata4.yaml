@@ -7,8 +7,9 @@ load_in_4bit: false
 strict: false
 
 chat_template: qwen
+chat_template: qwen
 datasets:
-  - path: /home/peterjin/mnt/axolotl_train/nq_train_3/llama3.1-8B-chat/train.jsonl
+  - path: /home/peterjin/mnt/axolotl_train/nq_train_3/e5/llama3.1-8B-chat/train.jsonl
     ds_type: json
     type: chat_template
     chat_template: qwen
@@ -22,7 +23,7 @@ datasets:
         - system
       assistant:
         - assistant
-  - path: /home/peterjin/mnt/axolotl_train/hotpotqa_train_3/llama3.1-8B-chat/train.jsonl
+  - path: /home/peterjin/mnt/axolotl_train/hotpotqa_train_3/e5/llama3.1-8B-chat/train.jsonl
     ds_type: json
     type: chat_template
     chat_template: qwen
