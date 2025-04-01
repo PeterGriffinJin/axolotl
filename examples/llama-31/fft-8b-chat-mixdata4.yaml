@@ -8,7 +8,7 @@ strict: false
 
 chat_template: qwen
 datasets:
-  - path: /home/peterjin/mnt/axolotl_train/nq_train_direct/llama3-8B-chat/train.jsonl
+  - path: /home/peterjin/mnt/axolotl_train/nq_train_3/llama3.1-8B-chat/train.jsonl
     ds_type: json
     type: chat_template
     chat_template: qwen
@@ -22,7 +22,7 @@ datasets:
         - system
       assistant:
         - assistant
-  - path: /home/peterjin/mnt/axolotl_train/hotpotqa_train_direct/llama3.1-8B-chat/train.jsonl
+  - path: /home/peterjin/mnt/axolotl_train/hotpotqa_train_3/llama3.1-8B-chat/train.jsonl
     ds_type: json
     type: chat_template
     chat_template: qwen
@@ -39,9 +39,9 @@ datasets:
 
 dataset_prepared_path: last_run_prepared
 val_set_size: 0.05
-output_dir: /home/peterjin/axolotl_output/nq_hotpotqa_qwen3bit_sft
+output_dir: /home/peterjin/axolotl_output/nq_hotpotqa_qwen7bit_ragft
 
-sequence_len: 4096
+sequence_len: 1024
 sample_packing: false
 eval_sample_packing: false
 pad_to_sequence_len: true
@@ -49,7 +49,7 @@ pad_to_sequence_len: true
 wandb_project: RAG-tune-llm
 wandb_entity: uiuc-dmg
 wandb_watch:
-wandb_name: nq_hotpotqa_qwen3bit_sft
+wandb_name: nq_hotpotqa_qwen7bit_ragft
 wandb_log_model:
 
 gradient_accumulation_steps: 8
