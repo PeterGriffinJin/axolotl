@@ -8,7 +8,8 @@ strict: false
 
 chat_template: qwen
 datasets:
-  - path: /home/peterjin/mnt/other_data/cell-o1/train.jsonl
+  # - path: /home/peterjin/mnt/other_data/cell-o1/train.jsonl
+  - path: /home/peterjin/mnt/axolotl_train/nq_train_direct/llama3-8B-chat/train.jsonl
     ds_type: json
     type: chat_template
     chat_template: qwen
