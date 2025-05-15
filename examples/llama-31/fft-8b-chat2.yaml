@@ -28,7 +28,7 @@ dataset_prepared_path: last_run_prepared
 val_set_size: 0.05
 output_dir: /home/peterjin/axolotl_output/cello1_qwen7bit_sft
 
-sequence_len: 2048 # 24576 can be supported by 8 h100s, 
+sequence_len: 4096 # 24576 can be supported by 8 h100s, 
 sample_packing: false
 eval_sample_packing: false
 pad_to_sequence_len: true

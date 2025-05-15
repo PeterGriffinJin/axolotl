@@ -8,7 +8,8 @@ strict: false
 
 chat_template: llama31
 datasets:
-  - path: /home/peterjin/mnt/axolotl_train/nq_train/e5/llama3-8B-chat/train.jsonl
+  - path: /home/peterjin/mnt/other_data/cell-o1/train.jsonl
+  # - path: /home/peterjin/mnt/axolotl_train/nq_train/e5/llama3-8B-chat/train.jsonl
     ds_type: json
     type: chat_template
     chat_template: llama31
@@ -26,10 +27,10 @@ datasets:
 dataset_prepared_path: last_run_prepared
 val_set_size: 0.05
 # output_dir: /home/peterjin/mnt/axolotl_output/nq_train-e5-llama31-8B-chat-epoch4-lr1e-5
-output_dir: /home/peterjin/mnt/axolotl_output/debug
+output_dir: /home/peterjin/mnt/axolotl_output/cello1_llama8bit_sft
 
-sequence_len: 16384 # 24576 can be supported by 8 h100s, 
-sample_packing: true
+sequence_len: 4096 # 24576 can be supported by 8 h100s, 
+sample_packing: false
 eval_sample_packing: false
 pad_to_sequence_len: true
 
@@ -37,11 +38,11 @@ wandb_project: RAG-tune-llm
 wandb_entity: uiuc-dmg
 wandb_watch:
 # wandb_name: nq_train-e5-llama31-8B-chat-epoch4-lr1e-5
-wandb_name: debug
+wandb_name: cello1_llama8bit_sft
 wandb_log_model:
 
 gradient_accumulation_steps: 8
-micro_batch_size: 1
+micro_batch_size: 2
 num_epochs: 4
 optimizer: paged_adamw_8bit
 lr_scheduler: cosine
